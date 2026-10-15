@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cusi Nanis - Cuidado Infantil en el Valle Sagrado</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4A90E2;
+            --primary-light: #EBF3FC;
+            --secondary: #2ECC71;
+            --accent: #F39C12;
+            --text-dark: #2C3E50;
+            --text-light: #7F8C8D;
+            --bg-light: #F9FBFD;
+            --white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .btn-cta {
+            background-color: var(--secondary);
+            color: var(--white) !important;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: bold !important;
+            transition: background 0.3s;
+        }
+
+        .btn-cta:hover {
+            background-color: #27AE60;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 160px 0 100px 0;
+            background: linear-gradient(135deg, var(--primary-light) 0%, #FFFFFF 100%);
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: var(--text-light);
+            max-width: 800px;
+            margin: 0 auto 30px auto;
+        }
+
+        .hero-badges {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            background: var(--white);
+            padding: 15px 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .badge i {
+            font-size: 24px;
+            color: var(--accent);
+        }
+
+        .badge-text span {
+            display: block;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .badge-text small {
+            color: var(--text-light);
+        }
+
+        /* Services Section */
+        .services {
+            padding: 80px 0;
+            background-color: var(--white);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 32px;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: var(--text-light);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: var(--bg-light);
+            padding: 35px;
+            border-radius: 15px;
+            border: 1px solid #EBF2F7;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--primary-light);
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .service-icon i {
+            font-size: 24px;
+            color: var(--primary);
+        }
+
+        .service-card h3 {
+            margin-bottom: 15px;
+            font-size: 22px;
+        }
+
+        .service-card p {
+            color: var(--text-light);
+            margin-bottom: 20px;
+            font-size: 15px;
+        }
+
+        .service-tags {
+            list-style: none;
+        }
+
+        .service-tags li {
+            margin-bottom: 8px;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .service-tags i {
+            color: var(--secondary);
+        }
+
+        .price-tag {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--white);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        /* Calculator Section */
+        .calculator-section {
+            padding: 80px 0;
+            background: var(--bg-light);
+        }
+
+        .calc-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            background: var(--white);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            align-items: start;
+        }
+
+        .calc-form h3, .calc-results h3 {
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .form-group select, .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #DCE4EC;
+            border-radius: 8px;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            font-size: 15px;
+            outline: none;
+        }
+
+        .calc-results {
+            background: var(--primary-light);
+            padding: 30px;
+            border-radius: 12px;
+            height: 100%;
+        }
+
+        .result-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(74, 144, 226, 0.2);
+        }
+
+        .result-item.total {
+            border-bottom: none;
+            font-weight: bold;
+            font-size: 20px;
+            color: var(--primary);
+            margin-top: 20px;
+        }
+
+        .btn-whatsapp {
+            display: block;
+            width: 100%;
+            background-color: var(--secondary);
+            color: var(--white);
+            text-align: center;
+            padding: 14px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 25px;
+            transition: background 0.3s;
+        }
+
+        .btn-whatsapp:hover {
+            background-color: #27AE60;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 80px 0;
+            background-color: var(--white);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background: var(--bg-light);
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid #EBF2F7;
+        }
+
+        .stars {
+            color: var(--accent);
+            margin-bottom: 15px;
+        }
+
+        .testimonial-card p {
+            font-style: italic;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .avatar {
+            width: 45px;
+            height: 45px;
+            background: var(--primary);
+            color: var(--white);
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .user-details h4 {
+            font-size: 15px;
+        }
+
+        .user-details small {
+            color: var(--text-light);
+        }
+
+        /* FAQ Section */
+        .faq {
+            padding: 80px 0;
+            background: var(--bg-light);
+        }
+
+        .faq-wrapper {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--white);
+            margin-bottom: 15px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+        }
+
+        .faq-item h3 {
+            font-size: 17px;
+            margin-bottom: 10px;
+            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .faq-item h3 i {
+            color: var(--primary);
+        }
+
+        .faq-item p {
+            color: var(--text-light);
+            font-size: 15px;
+            padding-left: 25px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--text-dark);
+            color: var(--white);
+            padding: 60px 0 20px 0;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 50px;
+            margin-bottom: 40px;
+        }
+
+        .footer-about h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        .footer-about p {
+            color: #BDC3C7;
+            max-width: 400px;
+        }
+
+        .footer-links h4, .footer-contact h4 {
+            margin-bottom: 20px;
+            font-size: 18px;
+            position: relative;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #BDC3C7;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        .footer-contact p {
+            color: #BDC3C7;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-contact i {
+            color: var(--primary);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #34495E;
+            color: #7F8C8D;
+            font-size: 14px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .hero h1 {
+                font-size: 32px;
+            }
+            .calc-wrapper {
+                grid-template-columns: 1fr;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <i class="fas fa-baby-carriage"></i> Cusi Nanis
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#servicios">Servicios</a></li>
+                    <li><a href="#cotizador">Cotizador</a></li>
+                    <li><a href="#testimonios">Testimonios</a></li>
+                    <li><a href="#preguntas">Preguntas</a></li>
+                    <li><a href="#cotizador" class="btn-cta">Cotizar Servicio</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero">
+        <div class="container">
+            <h1>Cuidado amoroso e integral en Cusco</h1>
+            <p>Tranquilidad y amor para tus hijos en el Valle Sagrado. Nanas calificadas y con vocación de servicio para familias residentes y visitantes.</p>
+            <a href="#cotizador" class="btn-cta" style="padding: 15px 35px; font-size: 18px; text-decoration: none;">Calcular Cotización</a>
+            
+            <div class="hero-badges">
+                <div class="badge">
+                    <i class="fas fa-user-check"></i>
+                    <div class="badge-text">
+                        <span>100%</span>
+                        <small>Personal Verificado</small>
+                    </div>
+                </div>
+                <div class="badge">
+                    <i class="fas fa-coins"></i>
+                    <div class="badge-text">
+                        <span>S/ 20</span>
+                        <small>Hora en Urubamba</small>
+                    </div>
+                </div>
+                <div class="badge">
+                    <i class="fas fa-calendar-alt"></i>
+                    <div class="badge-text">
+                        <span>Flexible</span>
+                        <small>Por horas o días</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="servicios" class="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nuestros Servicios</h2>
+                <p>Cuidado especializado con calidez andina adaptado a las necesidades de tu familia en el Valle Sagrado.</p>
+            </div>
+            
+            <div class="services-grid">
+                <!-- Service 1 -->
+                <div class="service-card">
+                    <div class="price-tag">Popular</div>
+                    <div class="service-icon"><i class="fas fa-clock"></i></div>
+                    <h3>Cuidado Infantil por Horas</h3>
+                    <p>Ideal para padres que necesitan un tiempo libre, atender reuniones o realizar turismo. Acompañamiento atento, alimentación y juegos dentro o fuera de casa.</p>
+                    <ul class="service-tags">
+                        <li><i class="fas fa-check-circle"></i> Tarifa flexible desde S/ 20/hora</li>
+                        <li><i class="fas fa-check-circle"></i> Supervisión constante</li>
+                        <li><i class="fas fa-check-circle"></i> Adaptado a tu horario</li>
+                    </ul>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="service-card">
+                    <div style="height: 37px;"></div>
+                    <div class="service-icon"><i class="fas fa-graduation-cap"></i></div>
+                    <h3>Nana Sombra y Aprendizaje</h3>
+                    <p>Acompañamiento especializado para reforzar tareas escolares, desarrollo de hábitos positivos, socialización e integración en entornos educativos o del hogar.</p>
+                    <ul class="service-tags">
+                        <li><i class="fas fa-check-circle"></i> Apoyo pedagógico básico</li>
+                        <li><i class="fas fa-check-circle"></i> Refuerzo de concentración</li>
+                        <li><i class="fas fa-check-circle"></i> Asistencia personalizada</li>
+                    </ul>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="service-card">
+                    <div style="height: 37px;"></div>
+                    <div class="service-icon"><i class="fas fa-puzzle-piece"></i></div>
+                    <h3>Estimulación Temprana</h3>
+                    <p>Actividades sensoriales, motrices y lúdicas diseñadas según la etapa de crecimiento de los bebés y niños pequeños para potenciar sus habilidades de forma divertida.</p>
+                    <ul class="service-tags">
+                        <li><i class="fas fa-check-circle"></i> Juegos sensoriales</li>
+                        <li><i class="fas fa-check-circle"></i> Desarrollo motriz fino/grueso</li>
+                        <li><i class="fas fa-check-circle"></i> Materiales lúdicos adaptados</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Calculator Section -->
+    <section id="cotizador" class="calculator-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Calculadora Transparente</h2>
+                <p>Cotiza tu servicio al instante. Calcula el monto exacto según el lugar y las horas solicitadas.</p>
+            </div>
+
+            <div class="calc-wrapper">
+                <div class="calc-form">
+                    <h3>1. Configura tu Servicio</h3>
+                    
+                    <div class="form-group">
+                        <label for="ubicacion">Selecciona la Ubicación</label>
+                        <select id="ubicacion" onchange="calcularTotal()">
+                            <option value="0">Urubamba (S/ 20/h - Sin pasajes)</option>
+                            <option value="15">Calca (+ S/ 15 pasajes)</option>
+                            <option value="10">Yucay (+ S/ 10 pasajes)</option>
+                            <option value="15">Maras / Huayllabamba (+ S/ 15 pasajes)</option>
+                            <option value="20">Ollantaytambo (+ S/ 20 pasajes)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="servicio">Servicio Requerido</label>
+                        <select id="servicio">
+                            <option value="20">Cuidado por Horas</option>
+                            <option value="25">Nana Sombra y Aprendizaje</option>
+                            <option value="25">Estimulación Temprana</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="horas">Número de Horas (Mínimo 2h)</label>
+                        <input type="number" id="horas" value="3" min="2" max="24" oninput="calcularTotal()">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="ninos">Cantidad de Niños</label>
+                        <select id="ninos">
+                            <option value="1">1 niño</option>
+                            <option value="2">2 niños</option>
+                            <option value="3">3 niños</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="calc-results">
+                    <h3>Resumen Estimado</h3>
+                    <div class="result-item">
+                        <span>Tarifa por hora:</span>
+                        <span id="res-tarifa">S/ 20.00 / hr</span>
+                    </div>
+                    <div class="result-item">
+                        <span>Subtotal por Horas:</span>
+                        <span id="res-subtotal">S/ 60.00</span>
+                    </div>
+                    <div class="result-item">
+                        <span>Pasajes/Transporte:</span>
+                        <span id="res-pasajes">S/ 0.00</span>
+                    </div>
+                    <div class="result-item total">
+                        <span>Total Estimado:</span>
+                        <span id="res-total">S/ 60.00</span>
+                    </div>
+
+                    <a href="https://wa.me/51931877641?text=Hola%20Cusi%20Nanis,%20deseo%20confirmar%20una%20cotización" class="btn-whatsapp" target="_blank">
+                        <i class="fab fa-whatsapp"></i> Enviar Cotización por WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonios" class="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>Experiencias Reales</h2>
+                <p>Lo que dicen las familias del Valle Sagrado sobre Cusi Nanis</p>
+            </div>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p>"Excelente servicio en Urubamba. La nana de Cusi Nanis fue super puntual, cariñosa y conectó de inmediato con mi hija de 2 años. Total tranquilidad."</p>
+                    <div class="user-info">
+                        <div class="avatar">MA</div>
+                        <div class="user-details">
+                            <h4>María Alejandra V.</h4>
+                            <small>Residente en Urubamba</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p>"Contratamos el servicio para Calca durante unas vacaciones de trabajo remoto. Fue puntualísimo el traslado y los niños quedaron felices con sus actividades."</p>
+                    <div class="user-info">
+                        <div class="avatar">CP</div>
+                        <div class="user-details">
+                            <h4>Carlos & Patricia</h4>
+                            <small>Visitantes en Calca</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p>"El servicio de Nana Sombra nos ayudó muchísimo con mi pequeño en sus etapas de aprendizaje en casa. Profesionalismo de primera en el Valle."</p>
+                    <div class="user-info">
+                        <div class="avatar">SL</div>
+                        <div class="user-details">
+                            <h4>Sofia L.</h4>
+                            <small>Residente en Yucay</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="preguntas" class="faq">
+        <div class="container">
+            <div class="section-title">
+                <h2>Resolvemos tus dudas</h2>
+                <p>Preguntas Frecuentes</p>
+            </div>
+
+            <div class="faq-wrapper">
+                <div class="faq-item">
+                    <h3><i class="far fa-question-circle"></i> ¿Cuál es el costo por hora del servicio en Urubamba?</h3>
+                    <p>La tarifa base en Urubamba es de S/ 20.00 por hora y no incluye cobros adicionales por concepto de pasajes.</p>
+                </div>
+                <div class="faq-item">
+                    <h3><i class="far fa-question-circle"></i> ¿Cómo se calculan los costos de pasaje a otras zonas?</h3>
+                    <p>Se aplica un recargo fijo por transporte dependiendo de la distancia: Yucay +S/ 10, Calca y Maras +S/ 15, y Ollantaytambo +S/ 20.</p>
+                </div>
+                <div class="faq-item">
+                    <h3><i class="far fa-question-circle"></i> ¿Cómo seleccionan y verifican a las nanas?</h3>
+                    <p>Contamos con un riguroso proceso de selección que incluye verificación de antecedentes, referencias verificables y pruebas psicométricas para garantizar una vocación de servicio al 100%.</p>
+                </div>
+                <div class="faq-item">
+                    <h3><i class="far fa-question-circle"></i> ¿Con cuánta anticipación debo realizar mi reserva?</h3>
+                    <p>Recomendamos realizar la reserva con un mínimo de 24 a 48 horas de anticipación para asegurar la disponibilidad de la nana ideal para tu familia.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <h3>Cusi Nanis</h3>
+                    <p>Agencia de cuidado infantil en el Valle Sagrado de los Incas. Llevamos confianza, seguridad y cariño al hogar de tus niños.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Cobertura</h4>
+                    <ul>
+                        <li>Urubamba</li>
+                        <li>Calca</li>
+                        <li>Yucay</li>
+                        <li>Maras</li>
+                        <li>Ollantaytambo</li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contacto Directo</h4>
+                    <p><i class="fas fa-phone"></i> +51 931 877 641</p>
+                    <p><i class="fab fa-whatsapp"></i> +51 931 877 641</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Urubamba - Valle Sagrado, Cusco - Perú</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Cusi Nanis. Todos los derechos reservados. Valle Sagrado de los Incas.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function calcularTotal() {
+            const costoHora = 20;
+            const pasajes = parseFloat(document.getElementById('ubicacion').value);
+            const horas = parseInt(document.getElementById('horas').value) || 0;
+            
+            const subtotal = costoHora * horas;
+            const total = subtotal + pasajes;
+            
+            document.getElementById('res-subtotal').innerText = 'S/ ' + subtotal.toFixed(2);
+            document.getElementById('res-pasajes').innerText = 'S/ ' + pasajes.toFixed(2);
+            document.getElementById('res-total').innerText = 'S/ ' + total.toFixed(2);
+            
+            // Actualizar el link de WhatsApp dinámicamente con los datos seleccionados
+            const ubiSelect = document.getElementById('ubicacion');
+            const ubiTexto = ubiSelect.options[ubiSelect.selectedIndex].text.split(' ')[0];
+            const mensaje = `Hola Cusi Nanis, deseo cotizar el servicio para ${ubiTexto} por ${horas} horas. Total estimado: S/ ${total.toFixed(2)}.`;
+            const whatsappLink = `https://wa.me/51931877641?text=${encodeURIComponent(mensaje)}`;
+            
+            document.querySelector('.btn-whatsapp').href = whatsappLink;
+        }
+        
+        // Inicializar cálculo básico al cargar
+        window.onload = calcularTotal;
+    </script>
+</body>
+</html>
